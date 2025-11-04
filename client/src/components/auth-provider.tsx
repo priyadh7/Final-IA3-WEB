@@ -34,8 +34,16 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (isProtectedPath && !user) {
-    return null;
+
+  if (isProtectedPath && !user && !isLoading) {
+    // Show a fallback UI while redirecting
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <p className="text-muted-foreground">Redirecting to login...</p>
+        </div>
+      </div>
+    );
   }
 
   return <>{children}</>;
