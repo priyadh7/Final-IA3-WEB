@@ -4,7 +4,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { registerRoutes } from "./routes";
+import { registerRoutes } from "./routes.js";
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Register all API routes
-registerRoutes(app).then(server => {
+registerRoutes(app).then((server: any) => {
   // Start the server
   const PORT = process.env.PORT || 5000;
   server.listen(PORT, () => {
